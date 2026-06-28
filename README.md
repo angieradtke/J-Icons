@@ -2,7 +2,7 @@ Here is the English translation:
 
 ---
 
-# j-icon System – Application
+# J-icon System – Plugin
 
 ## What is j-icon?
 
