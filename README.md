@@ -205,25 +205,6 @@ The Web Component uses Shadow DOM (encapsulated). External CSS classes do not af
 
 ---
 
-# Loading the Web Component
-
-The `<j-icon>` element is automatically registered when `j-icon.js` loads:
-
-```html
-<!-- Plugin loads automatically (when Sprite Injection is enabled) -->
-<!-- or manually load: -->
-<script src="plugins/system/jicon/media/js/j-icon.js" defer></script>
-```
-
-The `JIcon` class is automatically registered on `DOMContentLoaded` (or immediately if the DOM is already loaded).
-
-Alternatively, register manually:
-
-```javascript
-JIcon.register(); // Register Web Component
-```
-
----
 
 # CSS Classes
 
