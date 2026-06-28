@@ -201,24 +201,7 @@ The Web Component uses Shadow DOM (encapsulated). External CSS classes do not af
 
 ---
 
-# Programmatic API
 
-```javascript
-const icon = document.querySelector('j-icon');
-
-// Change icon
-icon.setIcon('#icon-solid-heart');
-console.log(icon.getIcon()); // -> '#icon-solid-heart'
-
-// Change size
-icon.setSize('2.5');
-
-// Change color
-icon.setColor('#ff0000');
-
-// Set focus (prioritizes parent button/link)
-icon.focus();
-```
 
 ---
 
