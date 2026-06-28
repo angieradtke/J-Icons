@@ -1,0 +1,70 @@
+/* j-icon System — Base Styles */
+
+:root, :host {
+  --j-icon-display: inline-block;
+  --j-icon-width: 1.5em;
+  --j-icon-vertical-align: -0.125em;
+  --j-icon-color: var(--j-icon-color-primary);
+  --j-icon-opacity: 1;
+}
+
+/* Icon Base */
+.j-icon {
+  aspect-ratio: 1;
+  box-sizing: content-box;
+  color: var(--j-icon-color);
+  display: var(--j-icon-display);
+  fill: currentcolor;
+  fill: var(--j-icon-color);
+  overflow: visible;
+  vertical-align: var(--j-icon-vertical-align);
+  width: var(--j-icon-width);
+
+}
+
+/* Sizes */
+.j-icon.j-icon-2xs { width: 0.875em;}
+.j-icon.j-icon-xs  { width: 1em; }
+.j-icon.j-icon-sm  { width: 1.25em; }
+.j-icon.j-icon-lg  { width: 2em; }
+.j-icon.j-icon-xl  { width: 4em; }
+.j-icon.j-icon-2xl { width: 6em; }
+
+/* Colors */
+.j-icon-primary { color: var(--j-icon-color-primary); fill: var(--j-icon-color-primary); }
+.j-icon-success { color: var(--j-icon-color-success); fill: var(--j-icon-color-success); }
+.j-icon-warning { color: var(--j-icon-color-warning); fill: var(--j-icon-color-warning); }
+.j-icon-danger { color: var(--j-icon-color-danger); fill: var(--j-icon-color-danger); }
+.j-icon-info { color: var(--j-icon-color-info); fill: var(--j-icon-color-info); }
+
+/* Animations */
+@keyframes j-icon-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes j-icon-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .j-icon-spin {
+    animation: j-icon-spin 2s linear infinite;
+  }
+  
+  .j-icon-pulse {
+    animation: j-icon-pulse 2s steps(5) infinite;
+  }
+}
+
+/* Effects */
+.j-icon.j-icon-inverse { fill: #fff; }
+.j-icon.j-icon-pull-left { float: left; margin-right: 0.3em; }
+.j-icon.j-icon-pull-right { float: right; margin-left: 0.3em; }
+
+/* Stacking */
+.j-icon-stack { display: inline-block; height: 2em; position: relative; width: 2.5em; }
+.j-icon-stack-1x, .j-icon-stack-2x { inset: 0; margin: auto; position: absolute; }
+.j-icon-stack-1x { --j-icon-width: 1.25em; }
+.j-icon-stack-2x { --j-icon-width: 2.5em; }

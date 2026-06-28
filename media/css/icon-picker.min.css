@@ -1,0 +1,111 @@
+/* Icon Picker — Admin Form Field */
+
+.jicon-picker {
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #f9f9f9;
+  padding: 15px;
+}
+
+.jicon-toggle
+{padding:1rem}
+.jicon-container {
+  max-height: 600px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background: white;
+}
+
+.jicon-group {
+  border: none;
+  padding: 15px;
+  margin: 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.jicon-group:last-child {
+  border-bottom: none;
+}
+
+.jicon-group legend {
+  font-weight: 600;
+  color: #0066cc;
+  margin-bottom: 10px;
+  padding: 0;
+  width: auto;
+}
+
+.jicon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .jicon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  }
+}
+
+.jicon-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  border:solid 1px #ddd
+}
+
+.jicon-option:hover {
+  background: #f0f4ff;
+  border-color: #0066cc;
+}
+
+.jicon-option input[type="checkbox"] {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.jicon-option input[type="checkbox"]:checked ~ .jicon-preview {
+  background: #0066cc;
+  color: white;
+  border-radius: 4px;
+}
+
+.jicon-preview {
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+  transition: all 0.2s ease;
+}
+
+.jicon-preview svg {
+  width: 2rem;
+  height: 2rem;
+  fill: currentColor;
+}
+
+.jicon-label {
+  font-size: 0.9rem;
+  word-break: break-word;
+  transition: color 0.2s ease;
+}
+
+
+.jicon-option input[type="checkbox"]:checked ~ .jicon-label {
+  color: #0066cc;
+  font-weight: 600;
+}
+
+.jicon-option.hidden {
+  display: none;
+}

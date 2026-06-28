@@ -1,0 +1,46 @@
+/* Backward Compatibility: FontAwesome zu SVG Mapping */
+
+/* Sizes */
+.fa-icon.fa-2x { width: 2em; height: 2em; }
+.fa-icon.fa-lg { width: 1.33333em; height: 1.33333em; }
+.fa-icon.fa-xs { width: 0.75em; height: 0.75em; }
+.fa-icon.fa-sm { width: 0.875em; height: 0.875em; }
+.fa-icon.fa-3x { width: 3em; height: 3em; }
+.fa-icon.fa-4x { width: 4em; height: 4em; }
+.fa-icon.fa-5x { width: 5em; height: 5em; }
+.fa-icon.fa-6x { width: 6em; height: 6em; }
+.fa-icon.fa-7x { width: 7em; height: 7em; }
+.fa-icon.fa-8x { width: 8em; height: 8em; }
+.fa-icon.fa-9x { width: 9em; height: 9em; }
+.fa-icon.fa-10x { width: 10em; height: 10em; }
+
+.fa-icon.fa-fw { width: 1.25em; }
+
+/* Animations */
+.fa-icon.fa-spin { animation: fa-spin 2s infinite linear; }
+.fa-icon.fa-pulse { animation: fa-pulse 1s infinite steps(8); }
+
+@keyframes fa-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes fa-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+/* Flip */
+.fa-icon.fa-flip-horizontal { transform: scaleX(-1); }
+.fa-icon.fa-flip-vertical { transform: scaleY(-1); }
+
+/* Rotate */
+.fa-icon.fa-rotate-90 { transform: rotate(90deg); }
+.fa-icon.fa-rotate-180 { transform: rotate(180deg); }
+.fa-icon.fa-rotate-270 { transform: rotate(270deg); }
+
+/* Inverse */
+.fa-icon.fa-inverse { color: #fff; fill: #fff; }
+
+/* Pull Float */
+.fa-icon.fa-pull-left { float: left; margin-right: 0.3em; }
+.fa-icon.fa-pull-right { float: right; margin-left: 0.3em; }
+
+/* Border */
+.fa-icon.fa-border { padding: 0.2em 0.25em; border: 0.08em solid rgba(0, 0, 0, 0.15); border-radius: 0.1em; }
+
+/* List Item */
+.fa-icon.fa-li { position: absolute; left: -2.5em; text-align: center; width: 2.5em; line-height: 1; top: 0.3em; }
