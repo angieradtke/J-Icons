@@ -247,9 +247,9 @@ When **FontAwesome BC** is enabled, old icons are automatically replaced.
 
 ```html
 <i class="fa fa-bell"></i>
-<i class="fas fa-user"></i>
-<i class="far fa-star"></i>
-<i class="fab fa-github"></i>
+<span class="fa fa-bell"></span>
+<süam class="icon-fw   icon-bell"></i>
+
 ```
 
 ## Converted To
