@@ -1,67 +1,123 @@
-<extension version="4.0" type="plugin" group="system" method="upgrade">
-  <name>plg_system_jicon</name>
-  <author>Angie Radtke</author>
-  <creationDate>2026-06-26</creationDate>
-  <copyright>Copyright © 2026</copyright>
-  <license>GNU/GPL</license>
-  <authorEmail>info@der-auftritt.de</authorEmail>
-  <version>1.0.0</version>
-  <description>j-icon System - Intelligentes SVG Icon Management</description>
-  <namespace path="src">Joomla\Plugin\System\JIcon</namespace>
-  <files>
-    <filename plugin="jicon">jicon.xml</filename>
-    <folder>services</folder>
-    <folder>src</folder>
-    <folder>media</folder>
-    <folder>language</folder>
-  </files>
-  <media destination="plugins/system/jicon">
-    <folder>media/css</folder>
-    <folder>media/js</folder>
-  </media>
-  <languages folder="language">
-    <language tag="de-DE">de-DE/plg_system_jicon.ini</language>
-    <language tag="de-DE">de-DE/plg_system_jicon.sys.ini</language>
-  </languages>
-  <config>
-    <fields name="params" addfieldprefix="Joomla\Plugin\System\JIcon\Field">
-      <fieldset name="basic" label="PLG_SYSTEM_JICON_FIELDSET_BASIC">
-        <field name="enable_plugin" type="radio" label="PLG_SYSTEM_JICON_ENABLE" default="1">
-          <option value="1">JYES</option>
-          <option value="0">JNO</option>
-        </field>
-        <field name="icon_display_mode" type="radio" default="html" label="Select an option" description="" class="btn-group">
-          <option value="html">PLG_SYSTEM_JICON_HTML</option>
-          <option value="webcomponent">PLG_SYSTEM_WEBCOMPONENT</option>
-        </field>
-        <field name="icon_category" type="IconCategory" label="PLG_SYSTEM_JICON_CATEGORY" description="PLG_SYSTEM_JICON_CATEGORY_DESC" default=""/>
-        <field name="inject_position" type="radio" label="PLG_SYSTEM_JICON_INJECT" description="PLG_SYSTEM_JICON_INJECT_DESC" default="body_start">
-          <option value="body_start">PLG_SYSTEM_JICON_BODYTOP</option>
-          <option value="body_end">PLG_SYSTEM_JICON_BODYBOTTOM</option>
-          <option value="cached">PLG_SYSTEM_JICON_CACHESPRITE</option>
-          <option value="manual">Manuell</option>
-        </field>
-        <field name="enable_bc_fontawesome" type="radio" label="PLG_SYSTEM_JICON_BC_ENABLE" description="PLG_SYSTEM_JICON_BC_ENABLE_DESC" default="0">
-          <option value="1">JYES</option>
-          <option value="0">JNO</option>
-        </field>
-      </fieldset>
-      <fieldset name="icons" label="PLG_SYSTEM_JICON_FIELDSET_ICONS">
-        <field name="selected_icons" type="icons" label="PLG_SYSTEM_JICON_SELECT_ICONS" description="PLG_SYSTEM_JICON_SELECT_ICONS_DESC"/>
-      </fieldset>
-      <fieldset name="colors" label="PLG_SYSTEM_JICON_FIELDSET_COLORS">
-        <field name="color_primary" type="color" label="PLG_SYSTEM_JICON_COLOR_PRIMARY" default="#0066cc"/>
-        <field name="color_primary_dark" type="color" label="PLG_SYSTEM_JICON_COLOR_PRIMARY_DARK" default="#4da6ff"/>
-        <field name="color_success" type="color" label="PLG_SYSTEM_JICON_COLOR_SUCCESS" default="#28a745"/>
-        <field name="color_success_dark" type="color" label="PLG_SYSTEM_JICON_COLOR_SUCCESS_DARK" default="#51cf66"/>
-        <field name="color_danger" type="color" label="PLG_SYSTEM_JICON_COLOR_DANGER" default="#dc3545"/>
-        <field name="color_danger_dark" type="color" label="PLG_SYSTEM_JICON_COLOR_DANGER_DARK" default="#ff6b6b"/>
-        <field name="color_warning" type="color" label="PLG_SYSTEM_JICON_COLOR_WARNING" default="#ffc107"/>
-        <field name="color_warning_dark" type="color" label="PLG_SYSTEM_JICON_COLOR_WARNING_DARK" default="#ffa500"/>
-        <field name="color_info" type="color" label="PLG_SYSTEM_JICON_COLOR_INFO" default="#17a2b8"/>
-        <field name="color_info_dark" type="color" label="PLG_SYSTEM_JICON_COLOR_INFO_DARK" default="#74c0fc"/>
-        <field name="token" type="token" />
-      </fieldset>
-    </fields>
-  </config>
+<extension version="4.0"
+           type="plugin"
+           group="system"
+           method="upgrade">
+	<name>PLG_SYSTEM_JICON</name>
+	<author>Angie Radtke</author>
+	<creationDate>2026-06-26</creationDate>
+	<copyright>Copyright (C) 2026</copyright>
+	<license>GPL-2.0-or-later</license>
+	<authorEmail>info@der-auftritt.de</authorEmail>
+	<version>1.0.0</version>
+	<description>PLG_SYSTEM_JICON_DESC</description>
+	<namespace path="src">Joomla\Plugin\System\JIcon</namespace>
+	<files>
+		<filename plugin="jicon">jicon.xml</filename>
+		<folder>services</folder>
+		<folder>src</folder>
+		<folder>media</folder>
+		<folder>language</folder>
+	</files>
+	<media folder="media"
+	       destination="plg_system_jicon">
+		<folder>css</folder>
+		<folder>js</folder>
+	</media>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/plg_system_jicon.ini</language>
+		<language tag="en-GB">en-GB/plg_system_jicon.sys.ini</language>
+		<language tag="de-DE">de-DE/plg_system_jicon.ini</language>
+		<language tag="de-DE">de-DE/plg_system_jicon.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params"
+		        addfieldprefix="Joomla\Plugin\System\JIcon\Field">
+			<fieldset name="basic"
+			          label="PLG_SYSTEM_JICON_FIELDSET_BASIC">
+				<field name="icon_display_mode"
+				       type="radio"
+				       default="html"
+				       label="PLG_SYSTEM_JICON_DISPLAY_MODE"
+				       class="btn-group">
+					<option value="html">PLG_SYSTEM_JICON_HTML</option>
+					<option value="webcomponent">PLG_SYSTEM_JICON_WEBCOMPONENT</option>
+				</field>
+				<field name="icon_category"
+				       type="IconCategory"
+				       label="PLG_SYSTEM_JICON_CATEGORY"
+				       description="PLG_SYSTEM_JICON_CATEGORY_DESC"
+				       default=""/>
+				<field name="inject_position"
+				       type="radio"
+				       label="PLG_SYSTEM_JICON_INJECT"
+				       description="PLG_SYSTEM_JICON_INJECT_DESC"
+				       default="body_start">
+					<option value="body_start">PLG_SYSTEM_JICON_BODYTOP</option>
+					<option value="body_end">PLG_SYSTEM_JICON_BODYBOTTOM</option>
+					<option value="cached">PLG_SYSTEM_JICON_CACHESPRITE</option>
+					<option value="manual">PLG_SYSTEM_JICON_MANUAL</option>
+				</field>
+				<field name="enable_bc_fontawesome"
+				       type="radio"
+				       label="PLG_SYSTEM_JICON_BC_ENABLE"
+				       description="PLG_SYSTEM_JICON_BC_ENABLE_DESC"
+				       default="0">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+			</fieldset>
+			<fieldset name="icons"
+			          label="PLG_SYSTEM_JICON_FIELDSET_ICONS">
+				<field name="selected_icons"
+				       type="icons"
+				       label="PLG_SYSTEM_JICON_SELECT_ICONS"
+				       description="PLG_SYSTEM_JICON_SELECT_ICONS_DESC"/>
+			</fieldset>
+			<fieldset name="colors"
+			          label="PLG_SYSTEM_JICON_FIELDSET_COLORS">
+				<field name="color_primary"
+				       type="color"
+				       label="PLG_SYSTEM_JICON_COLOR_PRIMARY"
+				       default="#0066cc"/>
+				<field name="color_primary_dark"
+				       type="color"
+				       label="PLG_SYSTEM_JICON_COLOR_PRIMARY_DARK"
+				       default="#4da6ff"/>
+				<field name="color_success"
+				       type="color"
+				       label="PLG_SYSTEM_JICON_COLOR_SUCCESS"
+				       default="#28a745"/>
+				<field name="color_success_dark"
+				       type="color"
+				       label="PLG_SYSTEM_JICON_COLOR_SUCCESS_DARK"
+				       default="#51cf66"/>
+				<field name="color_danger"
+				       type="color"
+				       label="PLG_SYSTEM_JICON_COLOR_DANGER"
+				       default="#dc3545"/>
+				<field name="color_danger_dark"
+				       type="color"
+				       label="PLG_SYSTEM_JICON_COLOR_DANGER_DARK"
+				       default="#ff6b6b"/>
+				<field name="color_warning"
+				       type="color"
+				       label="PLG_SYSTEM_JICON_COLOR_WARNING"
+				       default="#ffc107"/>
+				<field name="color_warning_dark"
+				       type="color"
+				       label="PLG_SYSTEM_JICON_COLOR_WARNING_DARK"
+				       default="#ffa500"/>
+				<field name="color_info"
+				       type="color"
+				       label="PLG_SYSTEM_JICON_COLOR_INFO"
+				       default="#17a2b8"/>
+				<field name="color_info_dark"
+				       type="color"
+				       label="PLG_SYSTEM_JICON_COLOR_INFO_DARK"
+				       default="#74c0fc"/>
+				<field name="token"
+				       type="token"/>
+			</fieldset>
+		</fields>
+	</config>
 </extension>
