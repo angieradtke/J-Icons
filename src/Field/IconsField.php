@@ -26,12 +26,18 @@ final class IconsField extends CheckboxesField
 		'brands/facebook', 'brands/x-twitter', 'brands/linkedin', 'brands/github', 'brands/joomla',
 	];
 	
+	/**
+	 *
+	 * @return array|object[]
+	 *
+	 * @since version
+	 */
 	public function getOptions()
 	{
 		$iconPath = JPATH_SITE . self::ICON_BASE;
 		$options  = [];
 
-		// get icon-styles from media/icons
+		// Get icon-styles from media/icons
 		$styles = [];
 		foreach (glob($iconPath . '/*', GLOB_ONLYDIR) ?: [] as $dir) {
 			$styles[] = basename($dir);
@@ -43,7 +49,7 @@ final class IconsField extends CheckboxesField
 			$category = (string) $this->form->getValue('icon_category', 'params', '');
 		}
 
-		// load choosen style
+		// Load choosen style
 		if ($category !== '' && in_array($category, $styles, true)) {
 			$styles = [$category];
 		}
@@ -78,6 +84,13 @@ final class IconsField extends CheckboxesField
 		return $options;
 	}
 	
+	/**
+	 *
+	 * @return string
+	 *
+	 * @throws \Exception
+	 * @since version
+	 */
 	public function getInput()
 	{
 		$groups = $this->getOptions();
@@ -103,18 +116,18 @@ final class IconsField extends CheckboxesField
 		
 		$selected = array_filter($selected, static fn ($v) => !empty($v));
 		
-		// preselect Icons
+		// Preselect Icons
 		if (empty($selected)) {
 			$selected = $this->importantIcons;
 		}
 		
-		// load css / Js
+		// Load css / Js
 		$doc = Factory::getApplication()->getDocument();
 		$doc->addStyleSheet('../plugins/system/jicon/media/css/icon-picker.min.css');
 		$fieldId = $this->id;
 		// === HTML ===
 		$html = '';
-		// Hidden field nur als interner State-Holder, ohne name-Attribut, damit es die Checkbox-Werte nicht ueberschreibt
+		// Hidden field used only as an internal state holder, without a “name” attribute, so that it does not overwrite the checkbox values
 		$html .= '<input type="hidden" id="' . htmlspecialchars($fieldId, ENT_QUOTES) . '" ';
 		$html .= 'value="' . htmlspecialchars(json_encode($selected), ENT_QUOTES) . '" />';
 		$html .= '<div class="jicon-picker">';
@@ -193,6 +206,16 @@ final class IconsField extends CheckboxesField
 		return $html;
 	}
 	
+	/**
+	 * @param   string  $label
+	 * @param   array   $icons
+	 * @param   array   $selected
+	 * @param   string  $fieldId
+	 *
+	 * @return string
+	 *
+	 * @since version
+	 */
 	private function renderGroup(string $label, array $icons, array $selected, string $fieldId): string
 	{
 		$html = '<fieldset class="jicon-group"><legend>' . htmlspecialchars($label, ENT_QUOTES) . '</legend>';
