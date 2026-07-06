@@ -36,9 +36,8 @@ final class JIconHelper
 	private string $iconPath;
 
 	/**
-	 * Wenn gesetzt, verweist render() ueber diese externe Sprite-URL
-	 * statt ueber ein internes Fragment. Wird im Cache-Modus genutzt.
-	 *
+	 * If set, render() uses this external sprite URL
+	 * * instead of an internal fragment. Used in cache mode.
 	 * @since 1.0
 	 */
 	private ?string $externalSpriteUrl = null;
@@ -87,10 +86,10 @@ final class JIconHelper
 		{
 			$this->register($name, $style);
 		}
-		
+
 		return $this;
 	}
-	
+
 	/**
 	 * Get all registered icons
 	 */
@@ -108,28 +107,28 @@ final class JIconHelper
 		{
 			return $this->spriteCache;
 		}
-		
+
 		$this->spriteCache = '<svg style="display:none" class="j-icon" xmlns="http://www.w3.org/2000/svg">' . "\n"
 			. $this->renderSymbols()
 			. '</svg>';
-		
+
 		return $this->spriteCache;
 	}
-	
+
 	/**
 	 * Build the <symbol> list from all registered icons.
 	 */
 	private function renderSymbols(): string
 	{
 		$symbols = '';
-		
+
 		foreach ($this->icons as $icon)
 		{
 			if (strpos($icon, '/') === false)
 			{
 				continue;
 			}
-			
+
 			[$style, $name] = explode('/', $icon);
 			$file     = $this->iconPath . '/' . $style . '/' . $name . '.svg';
 			$realPath = realpath($file);
@@ -144,15 +143,15 @@ final class JIconHelper
 				$symbols  .= $this->svgToSymbol($content, $symbolId) . "\n";
 			}
 		}
-		
+
 		return $symbols;
 	}
 	
 	/**
-	 * Convert SVG to Symbol element. Das <path> wird bewusst
-	 * selbstschliessend ausgegeben, damit auch die externe SVG-Datei
-	 * gueltiges XML ist.
-	 */
+	 * Convert SVG to a `symbol` element. The `<path>` is intentionally
+	 * * rendered as self-closing so that the external SVG file
+	 * * is also valid XML.
+ */
 	private function svgToSymbol(string $svgContent, string $id): string
 	{    // SVG bereinigen
 		$sanitizer  = new Sanitizer();
@@ -170,9 +169,9 @@ final class JIconHelper
 		{
 			$viewBox = '0 0 512 512';
 		}
-		
-		
-		// SVG-Inhalt zwischen <svg> und </svg> holen
+
+
+		// Retrieve SVG content between <svg> and </svg>
 		if (preg_match('/<svg[^>]*>(.*?)<\/svg>/is', $svgContent, $matches))
 		{
 			$content = $matches[1];
@@ -193,8 +192,8 @@ final class JIconHelper
 	}
 	
 	/**
-	 * Externe Sprite-URL setzen. Ist sie gesetzt, verweist render() ueber
-	 * diese Datei statt ueber ein internes Fragment.
+	 * Set the external sprite URL. If set, render() refers to
+	 * this file instead of an internal fragment.
 	 */
 	public function setExternalSpriteUrl(?string $url): void
 	{
@@ -202,14 +201,15 @@ final class JIconHelper
 	}
 	
 	/**
-	 * Render icon. Ohne externe URL ueber das interne Sprite (#icon-...),
-	 * mit externer URL ueber die gecachte Datei (datei.svg#icon-...).
-	 */
+	 * Render icon. Without an external URL, use the internal sprite (#icon-...),
+	 * * with an external URL, use the cached file (file.svg#icon-...).
+    */
 	public function render(
 		string $name,
 		string $style = '',
 		string $classes = ''
 	): string {
+		
 		$this->register($name, $style);
 		$symbolId  = str_replace(['/', '.svg'], ['-', ''], "{$name}");
 		$classList = 'j-icon ' . trim($classes);
@@ -220,14 +220,10 @@ final class JIconHelper
 			. '</svg>';
 	}
 	
-	/* ------------------------------------------------------------------ *
-	 *  Version C: gefingerprinteter, statisch auslieferbarer Datei-Sprite
-	 * ------------------------------------------------------------------ */
-	
 	/**
-	 * Oeffentliche URL zum gefingerprinteten Sprite-File. Stellt die Datei
-	 * sicher und gibt null zurueck, wenn kein Icon registriert ist.
-	 */
+	 * Public URL to the fingerprinted sprite file. Retrieves the file
+	 * * and returns null if no icon is registered.
+    */
 	public function getSpriteUrl(): ?string
 	{
 		if ($this->icons === [])
@@ -241,10 +237,9 @@ final class JIconHelper
 	}
 	
 	/**
-	 * Fingerprint ueber die registrierten Icons und die mtimes der
-	 * Quelldateien. Aendert sich, sobald ein Icon dazukommt, wegfaellt
-	 * oder eine SVG-Datei aktualisiert wird.
-	 */
+	 * Fingerprint based on the registered icons and the mtimes of the source files.
+	 * Changes as soon as an icon is added, removed or an SVG file is updated.
+ */
 	private function getSpriteHash(): string
 	{
 		$parts = [];
@@ -271,7 +266,7 @@ final class JIconHelper
 	}
 	
 	/**
-	 * Absolutes Cache-Verzeichnis fuer die Sprite-Dateien.
+	 * Absolute cache directory for the sprite files.
 	 */
 	private function getCacheDir(): string
 	{
@@ -279,7 +274,7 @@ final class JIconHelper
 	}
 	
 	/**
-	 * Absoluten Pfad und oeffentliche URL fuer einen Hash ableiten.
+	 * absolute path and public URL for a hash.
 	 *
 	 * @return array{0:string,1:string}
 	 */
@@ -293,8 +288,8 @@ final class JIconHelper
 	}
 	
 	/**
-	 * Sprite-Datei sicherstellen. Baut sie nur, wenn sie fuer den aktuellen
-	 * Hash noch nicht existiert, und schreibt atomar ueber eine Temp-Datei.
+	 * Ensure the sprite file exists. Build it only if it does not yet exist for the current hash,
+	 * and write to it atomically via a temporary file.
 	 *
 	 * @return array{0:string,1:string,2:string} [absoluterPfad, url, hash]
 	 */
@@ -326,8 +321,7 @@ final class JIconHelper
 	}
 	
 	/**
-	 * Sprite-SVG fuer die Datei. Eigenstaendiges Dokument, referenziert
-	 * wird ueber die Symbol-id.
+	 * External Sprite SVG File
 	 */
 	private function buildSpriteSvg(): string
 	{
@@ -337,7 +331,7 @@ final class JIconHelper
 	}
 	
 	/**
-	 * Alte, nicht mehr aktuelle Sprite-Dateien aufraeumen.
+	 * Clean up old, outdated sprite files.
 	 */
 	private function cleanupOldSprites(int $keep = 5): void
 	{
