@@ -15,8 +15,8 @@ use Joomla\CMS\Language\Text;
 defined('_JEXEC') or die;
 
 /**
- * Auswahlfeld fuer die Icon-Kategorie. Liest die Unterordner von
- * media/icons dynamisch ein und zeigt je Kategorie die Icon-Anzahl.
+ * Selection field for the icon category.
+ * Dynamically reads the subdirectories of media/icons and displays the number of icons for each category.
  */
 final class IconCategoryField extends ListField
 {
@@ -25,7 +25,7 @@ final class IconCategoryField extends ListField
 
     protected function getOptions()
     {
-        // "Alle Kategorien" zuerst
+        // "All Categories" first
         $options = [
             HTMLHelper::_('select.option', '', Text::_('PLG_SYSTEM_JICON_CATEGORY_ALL')),
         ];
