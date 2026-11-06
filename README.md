@@ -6,7 +6,7 @@ Here is the English translation:
 
 ## What is j-icon?
 
-Joomla System Plugin for SVG icon management. Provides  free FontAwesome icons (solid, regular, brands). Renders icons as inline SVG sprites or Webcompomeent. Old FontAwesome WebFont icons are automatically replaced.
+Joomla System Plugin for SVG icon management. Provides  free FontAwesome icons (solid, regular, brands). Renders icons as inline SVG sprites or Webcomponent. Old FontAwesome WebFont icons are automatically replaced.
 
 ## Installation
 
